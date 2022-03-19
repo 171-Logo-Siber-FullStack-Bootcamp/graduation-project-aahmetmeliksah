@@ -12,10 +12,10 @@ const logger = ('../loggger/productsLogger.js')
 // DISPLAY ALL PRODUCTS 
 const getAllProductsController = async (req, res) => {
    const result = await getAllProductsService(req, res)
-   await logger.log({
-    level: 'info',
-    message: 'Hello distributed log files!'
-  })
+//    await logger.log({
+//     level: 'info',
+//     message: 'Hello distributed log files!'
+//   })
    res.status(200).send(result)
 }
 
