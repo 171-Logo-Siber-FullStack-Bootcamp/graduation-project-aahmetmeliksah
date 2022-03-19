@@ -1,9 +1,8 @@
 const axios = require('axios')
 
-const getAllProducts = async () => {
+const addProduct = async () => {
   try {
-    const response = await axios.get(`http://localhost:5000/products`)
-
+    const response = await axios.post(`http://localhost:5000/addproduct`)
     // console.log(response)
     return response.data
   } catch (error) {
@@ -11,4 +10,4 @@ const getAllProducts = async () => {
   }
 }
 
-module.exports = getAllProducts()
+module.exports = addProduct()

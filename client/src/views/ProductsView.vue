@@ -1,30 +1,31 @@
 <template>
   <div>
     <ul>
-      <li v-for="data of msg" :key="data.id">
+      <li v-for="product of _products" :key="product.id">
         <p>
-          <strong>{{ data }}</strong>
+          <strong>{{ product.product_name }}</strong>
         </p>
-        <p>{{ data }}</p>
+        <p>{{ product.product_description }}</p>
       </li>
     </ul>
   </div>
 </template>
 <script>
-const api = require('../../services/server')
-let datas = []
-api.then((res) => {
-  datas = res
+const allProducts = require('../../services/products/getAll')
+let products = []
+allProducts.then((res) => {
+  products = res
 })
 
 export default {
-  mounted() {
-    this.msg = datas
-  },
+  name: 'ProductsView',
   data() {
     return {
-      msg: datas,
+      _products: products,
     }
+  },
+  mounted(res) {
+    this.products = res
   },
 }
 </script>
