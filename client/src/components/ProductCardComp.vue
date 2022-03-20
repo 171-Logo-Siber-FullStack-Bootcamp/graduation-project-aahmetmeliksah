@@ -30,9 +30,6 @@
                   <p class="small text-muted">
                     CATEGORY NAME: {{ product.category_name }}
                   </p>
-                  <p class="small text-muted">
-                    PRODUCT DESCRIPTION: {{ product.product_description }}
-                  </p>
                 </div>
               </div>
             </div>
@@ -45,7 +42,11 @@
             <hr class="my-0" />
             <div class="card-body">
               <div class="text-center pb-2 mb-1">
-                <button type="button" class="btn btn-primary">
+                <button
+                  type="button"
+                  class="btn btn-primary view-product-btn"
+                  @click="$emit('view-product', product)"
+                >
                   View Product
                 </button>
               </div>
