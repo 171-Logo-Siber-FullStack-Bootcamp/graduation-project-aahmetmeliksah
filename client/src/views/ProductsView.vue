@@ -1,16 +1,14 @@
 <template>
   <div>
-    <ul>
-      <li v-for="product of _products" :key="product.id">
-        <p>
-          <strong>{{ product.product_name }}</strong>
-        </p>
-        <p>{{ product.product_description }}</p>
-      </li>
-    </ul>
+    <ProductCardComp
+      v-for="product of products"
+      :key="product.id"
+      :product="product"
+    />
   </div>
 </template>
 <script>
+import ProductCardComp from '../components/ProductCardComp.vue' // require doesn't do
 const allProducts = require('../../services/products/getAll')
 let products = []
 allProducts.then((res) => {
@@ -19,13 +17,16 @@ allProducts.then((res) => {
 
 export default {
   name: 'ProductsView',
+  components: {
+    ProductCardComp,
+  },
   data() {
     return {
-      _products: products,
+      products,
     }
   },
   mounted(res) {
-    this.products = res
+    this._products = res
   },
 }
 </script>
