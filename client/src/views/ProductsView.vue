@@ -8,8 +8,8 @@
   </div>
 </template>
 <script>
-import ProductCardComp from '../components/ProductCardComp.vue' // require doesn't do
-const allProducts = require('../../services/products/getAll')
+import ProductCardComp from '../components/ProductCardComp.vue'
+import allProducts from '../../services/products/getAll'
 let products = []
 allProducts.then((res) => {
   products = res
@@ -24,9 +24,6 @@ export default {
     return {
       products,
     }
-  },
-  mounted(res) {
-    this._products = res
   },
 }
 </script>
