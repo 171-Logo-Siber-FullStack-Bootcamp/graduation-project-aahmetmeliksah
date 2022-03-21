@@ -1,5 +1,6 @@
 <template>
   <nav>
+    <router-link to="/addproduct">Add Product</router-link> |||
     <router-link to="/">Home</router-link> |||
     <router-link to="/products">Products</router-link> |||
     <router-link to="/card">Card</router-link>

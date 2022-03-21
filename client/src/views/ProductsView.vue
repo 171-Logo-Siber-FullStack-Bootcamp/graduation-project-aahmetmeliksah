@@ -5,7 +5,7 @@
       :active="active.product_drawer"
       v-on:close-product-drawer="closeProductDrawer()"
     />
-    <div class="d-flex">
+    <div>
       <ProductCardComp
         v-for="product in products"
         :key="product.id"

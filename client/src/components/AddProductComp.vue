@@ -1,6 +1,6 @@
 <template>
   <div class="container contact-form">
-    <form @submit.prevent="addProduct" method="post">
+    <form @submit.prevent="addProduct" method="POST" action="/products">
       <h3>Add Product</h3>
       <div class="row">
         <div class="col-md-6">
@@ -10,7 +10,6 @@
               name="product_name"
               class="form-control mb-3"
               placeholder="Product Title goes here..."
-              v-model="newProduct.product_name"
             />
           </div>
           <div class="form-group">
@@ -19,7 +18,6 @@
               name="category_name"
               class="form-control mb-3"
               placeholder="Category of your product goes here..."
-              v-model="newProduct.category_name"
             />
           </div>
           <div class="form-group">
@@ -33,7 +31,6 @@
               class="form-control"
               placeholder="Tell about your product to customers..."
               style="width: 100%; height: 150px"
-              v-model="newProduct.product_description"
             ></textarea>
           </div>
         </div>
@@ -44,30 +41,15 @@
 <script>
 import axios from 'axios'
 
-let newProduct = {
-  product_name: null,
-  category_name: null,
-  add_product: null,
-  product_description: null,
-}
 export default {
   data() {
-    return {
-      newProduct: newProduct,
-    }
+    return {}
   },
   methods: {
     addProduct: async () => {
-      const response = await axios.post(
-        `http://localhost:5000/addproduct`,
-        this.newProduct
-      )
-      console.log(response.data)
-      return response.data
-        .then((res) => {
-          newProduct = res
-        })
-        .catch((err) => console.log(err))
+      await axios.post('/products', (req, res) => {
+        console.log(req.body)
+      })
     },
   },
 }
