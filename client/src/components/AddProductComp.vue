@@ -10,6 +10,7 @@
               name="product_name"
               class="form-control mb-3"
               placeholder="Product Title goes here..."
+              v-model="newProduct.product_name"
             />
           </div>
           <div class="form-group">
@@ -18,10 +19,34 @@
               name="category_name"
               class="form-control mb-3"
               placeholder="Category of your product goes here..."
+              v-model="newProduct.category_name"
             />
           </div>
+
           <div class="form-group">
-            <input type="submit" name="add_product" class="btnContact" />
+            <input
+              type="text"
+              name="category_id"
+              class="form-control mb-3"
+              placeholder="Category ID goes here..."
+              v-model="newProduct.category_id"
+            />
+          </div>
+
+          <div class="form-group">
+            <input
+              type="text"
+              name="price"
+              class="form-control mb-3"
+              placeholder="Price of your product goes here..."
+              v-model="newProduct.price"
+            />
+          </div>
+
+          <div class="form-group">
+            <a href="http://localhost:8080/products"
+              ><input type="submit" name="add_product" class="btnContact"
+            /></a>
           </div>
         </div>
         <div class="col-md-6">
@@ -31,6 +56,7 @@
               class="form-control"
               placeholder="Tell about your product to customers..."
               style="width: 100%; height: 150px"
+              v-model="newProduct.product_description"
             ></textarea>
           </div>
         </div>
@@ -43,13 +69,24 @@ import axios from 'axios'
 
 export default {
   data() {
-    return {}
+    return {
+      newProduct: {
+        product_name: null,
+        product_description: null,
+        category_name: null,
+        category_id: null,
+        price: null,
+      },
+    }
   },
   methods: {
-    addProduct: async () => {
-      await axios.post('/products', (req, res) => {
-        console.log(req.body)
-      })
+    async addProduct() {
+      this.newProduct = await axios.post(
+        'http://localhost:5000/addproduct',
+        this.newProduct
+      )
+      // console.log(this.newProduct)
+      // axios.get('http://localhost:5000/')
     },
   },
 }
