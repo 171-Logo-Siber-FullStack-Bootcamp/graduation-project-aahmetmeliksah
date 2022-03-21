@@ -1,9 +1,9 @@
 <template>
   <section style="background-color: #eee">
-    <div class="container py-5">
-      <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6 col-xl-4">
-          <div class="card" style="border-radius: 15px">
+    <div class="container py-4">
+      <div class="col-12">
+        <div class="">
+          <div class="card" style="border-radius: 25px">
             <div
               class="bg-image hover-overlay ripple ripple-surface ripple-surface-light"
               data-mdb-ripple-color="light"

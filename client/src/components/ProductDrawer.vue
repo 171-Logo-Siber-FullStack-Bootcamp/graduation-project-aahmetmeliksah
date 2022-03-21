@@ -14,6 +14,7 @@
     <div class="product-details" v-if="product">
       <h3>{{ product.product_name }}</h3>
       <p class="description">{{ product.product_description }}</p>
+      <p class="description">${{ product.price }}</p>
     </div>
   </div>
 </template>

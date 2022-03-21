@@ -5,12 +5,14 @@
       :active="active.product_drawer"
       v-on:close-product-drawer="closeProductDrawer()"
     />
-    <ProductCardComp
-      v-for="product in products"
-      :key="product.id"
-      :product="product"
-      v-on:view-product="viewProduct($event)"
-    />
+    <div class="d-flex">
+      <ProductCardComp
+        v-for="product in products"
+        :key="product.id"
+        :product="product"
+        v-on:view-product="viewProduct($event)"
+      />
+    </div>
   </div>
 </template>
 <script>
