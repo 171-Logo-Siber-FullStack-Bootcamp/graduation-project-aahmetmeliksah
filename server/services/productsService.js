@@ -1,4 +1,4 @@
-const client = require('../../config/dbConfig')
+const client = require('../config/dbConfig')
 
 // DISPLAY ALL PRODUCTS
 const getAllProductsService = async () => {

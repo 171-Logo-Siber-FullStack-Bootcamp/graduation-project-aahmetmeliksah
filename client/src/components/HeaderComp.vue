@@ -9,7 +9,7 @@
             class="form-control"
             placeholder="Search products"
           />
-          <button class="btn btn-primary">Search</button>
+          <button class="search-button">Search</button>
         </div>
       </div>
     </div>
@@ -18,6 +18,7 @@
 
 <style scoped>
 .search-bar-background-color {
+  margin-top: -2rem;
   background: #24c6dc; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
@@ -75,5 +76,17 @@ body {
   background: blue;
 }
 
+.search-button {
+  color: white !important;
+  background: #24c6dc !important;
+  background: -webkit-linear-gradient(to right, #514a9d, #24c6dc) !important;
+  background: linear-gradient(to right, #514a9d, #24c6dc) !important;
+  border-radius: 0.5rem !important;
+}
+
+.search-button:hover {
+  opacity: 0.9 !important;
+  transition: 0.5s !important;
+}
 /* SEARCH BAR END */
 </style>

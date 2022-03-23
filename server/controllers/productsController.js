@@ -5,8 +5,8 @@ const {
   findProductByIdService,
   removeProductByIdService,
   updateProductByIdService,
-} = require('../services/products/productsService')
-const logger = '../loggger/productsLogger.js'
+} = require('../services/productsService')
+// const logger = '../loggger/productsLogger.js'
 
 // DISPLAY ALL PRODUCTS
 const getAllProductsController = async (req, res) => {
