@@ -57,8 +57,6 @@
               class="form-control mb-3"
               @change="onChangeFile"
             />
-
-            />
           </div>
 
           <!-- UPLOAD IMAGE UPLOAD IMAGE UPLOAD IMAGE UPLOAD IMAGE UPLOAD IMAGE UPLOAD IMAGE -->
