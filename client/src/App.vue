@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav class="text-center">
     <router-link to="/addproduct">Add Product</router-link> |||
     <router-link to="/">Home</router-link> |||
     <router-link to="/products">Products</router-link> |||
@@ -15,5 +15,6 @@ body {
   margin: 0;
   overflow-x: hidden;
   font-family: sans-serif;
+  /* background-color: rgb(127, 0, 255); */
 }
 </style>

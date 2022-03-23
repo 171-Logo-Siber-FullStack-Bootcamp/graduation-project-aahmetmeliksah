@@ -56,9 +56,11 @@ const addProductService = async (req, res) => {
         product_description, 
         category_name,
         price, 
-        category_id
+        category_id,
+        quantity,
+        img_url
         )
-    VALUES ($1, $2, $3, $4, $5) RETURNING *`
+    VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`
 
     const values = [
       req.body.product_name,
@@ -66,6 +68,8 @@ const addProductService = async (req, res) => {
       req.body.category_name,
       req.body.price,
       req.body.category_id,
+      req.body.quantity,
+      req.body.img_url,
     ]
 
     const result = await client.query(text, values)
@@ -86,6 +90,8 @@ const updateProductByIdService = async (req, res) => {
       category_name,
       price,
       category_id,
+      quantity,
+      img_url,
     } = req.body
 
     const result = await client.query(
@@ -94,9 +100,20 @@ const updateProductByIdService = async (req, res) => {
              product_description = $2,
              category_name = $3, 
              price = $4,
-             category_id = $5
-             WHERE id = $6`,
-      [product_name, product_description, category_name, price, category_id, id]
+             category_id = $5,
+             quantity = $6,
+             img_url = $7,
+             WHERE id = $8`,
+      [
+        product_name,
+        product_description,
+        category_name,
+        price,
+        category_id,
+        quantity,
+        img_url,
+        id,
+      ]
     )
     console.log(result)
     return result.rows

@@ -1,15 +1,15 @@
 <template>
-  <AddProductComp />
+  <HeroComp />
   <ProductsView />
 </template>
 
 <script>
 import ProductsView from './ProductsView.vue'
-import AddProductComp from '../components/AddProductComp.vue'
+import HeroComp from '../components/HeaderComp.vue'
 export default {
   components: {
     ProductsView,
-    AddProductComp,
+    HeroComp,
   },
 }
 </script>

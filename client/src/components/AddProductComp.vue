@@ -1,6 +1,11 @@
 <template>
   <div class="container contact-form">
-    <form @submit.prevent="addProduct" method="POST" action="/products">
+    <form
+      @submit.prevent="addProduct"
+      method="POST"
+      action="/products"
+      encType="multipart/form-data"
+    >
       <h3>Add Product</h3>
       <div class="row">
         <div class="col-md-6">
@@ -43,6 +48,21 @@
             />
           </div>
 
+          <!-- UPLOAD IMAGE UPLOAD IMAGE UPLOAD IMAGE UPLOAD IMAGE UPLOAD IMAGE UPLOAD IMAGE -->
+
+          <div class="form-group">
+            <input
+              type="file"
+              name="image"
+              class="form-control mb-3"
+              @change="onChangeFile"
+            />
+
+            />
+          </div>
+
+          <!-- UPLOAD IMAGE UPLOAD IMAGE UPLOAD IMAGE UPLOAD IMAGE UPLOAD IMAGE UPLOAD IMAGE -->
+
           <div class="form-group">
             <a href="http://localhost:8080/products"
               ><input type="submit" name="add_product" class="btnContact"
@@ -76,6 +96,8 @@ export default {
         category_name: null,
         category_id: null,
         price: null,
+        quantity: null,
+        img_url: null,
       },
     }
   },
