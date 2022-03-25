@@ -53,9 +53,10 @@
           <div class="form-group">
             <input
               type="file"
-              name="image"
+              ref="file"
+              name="product_image"
               class="form-control mb-3"
-              @change="onChangeFile"
+              @change="addProduct"
             />
           </div>
 
@@ -95,7 +96,7 @@ export default {
         category_id: null,
         price: null,
         quantity: null,
-        img_url: null,
+        product_image: null,
       },
     }
   },
@@ -105,8 +106,17 @@ export default {
         'http://localhost:5000/addproduct',
         this.newProduct
       )
+
+      this.newProduct = {
+        product_name: null,
+        product_description: null,
+        category_name: null,
+        category_id: null,
+        price: null,
+        quantity: null,
+        product_image: null,
+      }
       // console.log(this.newProduct)
-      // axios.get('http://localhost:5000/')
     },
   },
 }

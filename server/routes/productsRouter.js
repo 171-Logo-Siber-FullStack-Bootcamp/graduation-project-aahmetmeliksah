@@ -1,6 +1,6 @@
 const express = require('express')
-const router1 = express.Router() // for sellers
 const fileUpload = require('express-fileupload')
+const router1 = express.Router() // for sellers
 // const router2 = express.Router() for shoppers
 // const router3 = express.Router() for admin
 // const validate = require('../middlewares/validate')

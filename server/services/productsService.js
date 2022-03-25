@@ -47,7 +47,7 @@ const removeProductByIdService = async (req, res) => {
 }
 
 // ADD A PRODUCT
-const addProductService = async (req, res) => {
+const addProductService = async (req, res, filename) => {
   try {
     console.log(req.body)
     const text = `
@@ -58,7 +58,7 @@ const addProductService = async (req, res) => {
         price, 
         category_id,
         quantity,
-        img_url
+        product_image
         )
     VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`
 
@@ -69,7 +69,8 @@ const addProductService = async (req, res) => {
       req.body.price,
       req.body.category_id,
       req.body.quantity,
-      req.body.img_url,
+      req.body.product_image,
+      filename,
     ]
 
     const result = await client.query(text, values)
@@ -77,7 +78,7 @@ const addProductService = async (req, res) => {
     return result.rows
   } catch (error) {
     console.log(error)
-    return res.send(error)
+    return res.status(400).send(error)
   }
 }
 

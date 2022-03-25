@@ -7,6 +7,7 @@ const app = express()
 const client = require('./config/dbConfig')
 dotenv.config()
 
+app.use(express.static('../client/public'))
 // IMPORT ROUTERS, CONTROLLERS, SERVICES
 const router1 = require('./routes/productsRouter')
 

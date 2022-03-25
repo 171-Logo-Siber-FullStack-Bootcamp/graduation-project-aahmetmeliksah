@@ -6,7 +6,19 @@ const {
   removeProductByIdService,
   updateProductByIdService,
 } = require('../services/productsService')
+const { addProductImage } = require('../utils/ProductImageHelper')
 // const logger = '../loggger/productsLogger.js'
+
+// ADD A PRODUCT
+const addProductController = async (req, res) => {
+  try {
+    const filename = addProductImage(req)
+    const result = await addProductService(req, res, filename)
+    res.status(201).send(result)
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 // DISPLAY ALL PRODUCTS
 const getAllProductsController = async (req, res) => {
@@ -29,16 +41,6 @@ const removeProductByIdController = async (req, res) => {
   const result = await removeProductByIdService(req, res)
   res.status(200).send(result)
   console.log(`Product with id ${req.params.id} is REMOVED!`)
-}
-
-// ADD A PRODUCT
-const addProductController = async (req, res) => {
-  try {
-    const result = await addProductService(req, res)
-    res.status(201).send(result)
-  } catch (error) {
-    console.log(error)
-  }
 }
 
 // UPDATE A PRODUCT BY ID
