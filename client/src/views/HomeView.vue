@@ -1,7 +1,9 @@
 <template>
-  <HeaderComp />
-  <ProductsView />
-  <FooterComp />
+  <div>
+    <HeaderComp />
+    <ProductsView />
+    <FooterComp />
+  </div>
 </template>
 
 <script>

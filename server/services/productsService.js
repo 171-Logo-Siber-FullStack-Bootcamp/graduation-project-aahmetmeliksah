@@ -1,4 +1,5 @@
 const client = require('../config/dbConfig')
+const logger = require('../logs/ProductsLogger')
 
 // DISPLAY ALL PRODUCTS
 const getAllProductsService = async () => {
@@ -6,7 +7,7 @@ const getAllProductsService = async () => {
     const text = `SELECT * FROM products`
 
     const result = await client.query(text)
-    console.log(result)
+
     return result.rows
   } catch (error) {
     console.log(error.message)
@@ -17,8 +18,7 @@ const getAllProductsService = async () => {
 const findProductByIdService = async (req, res) => {
   try {
     const id = parseInt(req.params.id)
-    // console.log("=========================================================")
-    // console.log(req.params.id)
+
     const result = await client.query('SELECT * FROM products WHERE  id = $1', [
       id,
     ])
@@ -33,8 +33,7 @@ const findProductByIdService = async (req, res) => {
 const removeProductByIdService = async (req, res) => {
   try {
     const id = parseInt(req.params.id)
-    // console.log("=========================================================")
-    // console.log(req.params.id)
+
     const result = await client.query('DELETE FROM products WHERE id = $1', [
       id,
     ])
@@ -47,7 +46,7 @@ const removeProductByIdService = async (req, res) => {
 }
 
 // ADD A PRODUCT
-const addProductService = async (req, res, filename) => {
+const addProductService = async (req, res /*, filename*/) => {
   try {
     console.log(req.body)
     const text = `
@@ -57,10 +56,9 @@ const addProductService = async (req, res, filename) => {
         category_name,
         price, 
         category_id,
-        quantity,
-        product_image
+        quantity
         )
-    VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`
+    VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`
 
     const values = [
       req.body.product_name,
@@ -70,11 +68,15 @@ const addProductService = async (req, res, filename) => {
       req.body.category_id,
       req.body.quantity,
       req.body.product_image,
-      filename,
+      /*filename,*/
     ]
 
     const result = await client.query(text, values)
-    console.log(result)
+    await logger.log({
+      level: 'info',
+      message: result,
+    })
+    console.log(result.rows)
     return result.rows
   } catch (error) {
     console.log(error)
@@ -123,10 +125,27 @@ const updateProductByIdService = async (req, res) => {
   }
 }
 
+const addProductImageService = async (req, res) => {
+  try {
+    const text = `UPDATE products
+    SET product_image =$1
+    WHERE id= $2 RETURNING *`
+
+    const data = [filename, req.params.id]
+
+    const result = await client.query(text, data)
+
+    return result
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
 module.exports = {
   getAllProductsService,
   addProductService,
   findProductByIdService,
   removeProductByIdService,
   updateProductByIdService,
+  addProductImageService,
 }

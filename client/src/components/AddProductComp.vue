@@ -50,7 +50,7 @@
 
           <!-- UPLOAD IMAGE UPLOAD IMAGE UPLOAD IMAGE UPLOAD IMAGE UPLOAD IMAGE UPLOAD IMAGE -->
 
-          <div class="form-group">
+          <!-- <div class="form-group">
             <input
               type="file"
               ref="file"
@@ -58,7 +58,7 @@
               class="form-control mb-3"
               @change="addProduct"
             />
-          </div>
+          </div> -->
 
           <!-- UPLOAD IMAGE UPLOAD IMAGE UPLOAD IMAGE UPLOAD IMAGE UPLOAD IMAGE UPLOAD IMAGE -->
 
