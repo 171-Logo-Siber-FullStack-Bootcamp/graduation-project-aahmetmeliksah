@@ -7,7 +7,7 @@ const {
   findProductByIdService,
   removeProductByIdService,
   updateProductByIdService,
-  /*addProductImageService */
+  // addProductImageService,
 } = require('../services/productsService')
 // const { addProductImage } = require('../utils/ProductImageHelper')
 
@@ -69,13 +69,13 @@ const updateProductByIdController = async (req, res) => {
   res.status(200).send({ result, message: 'Product UPDATED' })
 }
 
-const addProductImageController = async (req, res) => {
-  const filename = await addProductImage(req, res)
+// const addProductImageController = async (req, res) => {
+//   const filename = await addProductImage(req, res)
 
-  const result = await addProductImageService(req, filename)
+//   const result = await addProductImageService(req, filename)
 
-  res.status(200).send('Image uploaded successfully')
-}
+//   res.status(200).send('Image uploaded successfully')
+// }
 
 module.exports = {
   getAllProductsController,
@@ -83,5 +83,5 @@ module.exports = {
   findProductByIdController,
   removeProductByIdController,
   updateProductByIdController,
-  addProductImageController,
+  // addProductImageController,
 }

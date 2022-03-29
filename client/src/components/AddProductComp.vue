@@ -13,9 +13,9 @@
             <input
               type="text"
               name="product_name"
-              class="form-control mb-3"
-              placeholder="Product Title goes here..."
               v-model="newProduct.product_name"
+              class="form-control mb-3"
+              placeholder="Type Product Name Here"
             />
           </div>
           <div class="form-group">
@@ -23,7 +23,7 @@
               type="text"
               name="category_name"
               class="form-control mb-3"
-              placeholder="Category of your product goes here..."
+              placeholder="Type Category Name Here"
               v-model="newProduct.category_name"
             />
           </div>
@@ -53,7 +53,6 @@
           <!-- <div class="form-group">
             <input
               type="file"
-              ref="file"
               name="product_image"
               class="form-control mb-3"
               @change="addProduct"
@@ -73,7 +72,7 @@
             <textarea
               name="product_description"
               class="form-control"
-              placeholder="Tell about your product to customers..."
+              placeholder="Tell about your product to customers"
               style="width: 100%; height: 150px"
               v-model="newProduct.product_description"
             ></textarea>
@@ -102,21 +101,25 @@ export default {
   },
   methods: {
     async addProduct() {
-      this.newProduct = await axios.post(
-        'http://localhost:5000/addproduct',
-        this.newProduct
-      )
+      try {
+        this.newProduct = await axios.post(
+          'http://localhost:5000/addproduct',
+          this.newProduct
+        )
 
-      this.newProduct = {
-        product_name: null,
-        product_description: null,
-        category_name: null,
-        category_id: null,
-        price: null,
-        quantity: null,
-        product_image: null,
+        this.newProduct = {
+          product_name: null,
+          product_description: null,
+          category_name: null,
+          category_id: null,
+          price: null,
+          quantity: null,
+          product_image: null,
+        }
+        // console.log(this.newProduct)
+      } catch (error) {
+        console.log(error)
       }
-      // console.log(this.newProduct)
     },
   },
 }

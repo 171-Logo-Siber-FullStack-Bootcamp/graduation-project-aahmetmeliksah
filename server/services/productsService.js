@@ -67,7 +67,7 @@ const addProductService = async (req, res /*, filename*/) => {
       req.body.price,
       req.body.category_id,
       req.body.quantity,
-      req.body.product_image,
+      /*req.body.product_image,*/
       /*filename,*/
     ]
 
@@ -147,5 +147,5 @@ module.exports = {
   findProductByIdService,
   removeProductByIdService,
   updateProductByIdService,
-  addProductImageService,
+  // addProductImageService,
 }
