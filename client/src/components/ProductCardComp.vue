@@ -4,7 +4,7 @@
       class="card col-sm-12 col-m-12 col-x-12 col-xl-12 mb-3 mt-3"
       style="border-radius: 25px"
     >
-      <div
+      <!-- <div
         class="bg-image hover-overlay ripple ripple-surface ripple-surface-light"
         data-mdb-ripple-color="light"
       >
@@ -17,7 +17,7 @@
         <a href="#!">
           <div class="mask"></div>
         </a>
-      </div>
+      </div> -->
       <div class="card-body pb-0">
         <div class="d-flex justify-content-between">
           <div>

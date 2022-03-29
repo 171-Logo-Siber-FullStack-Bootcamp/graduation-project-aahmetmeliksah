@@ -1,5 +1,5 @@
 <template>
-  <div class="container contact-form">
+  <div class="container contact-form mt-5">
     <form
       @submit.prevent="addProduct"
       method="POST"
@@ -63,7 +63,11 @@
 
           <div class="form-group">
             <a href="http://localhost:8080/products"
-              ><input type="submit" name="add_product" class="btnContact"
+              ><input
+                type="submit"
+                name="add_product"
+                class="btn btn-primary"
+                value="Add Product"
             /></a>
           </div>
         </div>
@@ -116,6 +120,8 @@ export default {
           quantity: null,
           product_image: null,
         }
+
+        this.$router.push('/')
         // console.log(this.newProduct)
       } catch (error) {
         console.log(error)

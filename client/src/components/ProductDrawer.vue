@@ -12,16 +12,50 @@
     <div class="drawer-close" @click="$emit('close-product-drawer')">X</div>
 
     <div class="product-details" v-if="product">
-      <h3>{{ product.product_name }}</h3>
+      <h3>PRODUCT : {{ product.product_name }}</h3>
+      <hr />
+      <h3>ID : {{ product.id }}</h3>
+      <hr />
+      <h3>Category : {{ product.category_name }}</h3>
+      <hr />
+      <h3>Category ID : {{ product.category_id }}</h3>
+      <hr />
       <p class="description">{{ product.product_description }}</p>
+      <hr />
       <p class="description">${{ product.price }}</p>
+    </div>
+
+    <div class="product-details" v-if="product">
+      <button class="btn btn-danger" @click="removeProduct">
+        Remove Product
+      </button>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   props: ['product', 'active'],
+
+  methods: {
+    async removeProduct() {
+      // console.log(this.product.id)
+      if (confirm('Are you sure you want to remove this product?')) {
+        try {
+          await axios.delete(
+            `http://localhost:5000/products/${this.product.id}`,
+            this.product
+          )
+
+          this.$router.push('/') // redirect to home page
+        } catch (error) {
+          console.log(error)
+        }
+      }
+    },
+  },
 }
 </script>
 
@@ -45,7 +79,7 @@ export default {
   overflow-y: scroll;
   width: 100vw;
   height: 100vh;
-  background-color: bisque;
+  background-color: rgb(228, 216, 228);
   position: fixed;
   top: 0;
   left: -105vw;
