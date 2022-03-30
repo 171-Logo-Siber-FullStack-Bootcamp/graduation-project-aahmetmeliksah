@@ -14,7 +14,6 @@
       />
     </div>
   </div>
-  <footer-comp />
 </template>
 <script>
 import ProductCardComp from '../components/ProductCardComp.vue'
