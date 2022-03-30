@@ -21,7 +21,7 @@ const addProductController = async (req, res) => {
     const result = await addProductService(req, res /*, filename*/)
 
     res.send(result)
-    // insertDocument('e_commerce1', result.id, 'products', result)
+    insertDocument('e_commerce1', result.id, 'products', result)
   } catch (error) {
     console.log(error)
     res.send(error)
@@ -93,6 +93,6 @@ module.exports = {
   findProductByIdController,
   removeProductByIdController,
   updateProductByIdController,
-  // getProductThroughSearch,
+  getProductThroughSearch,
   // addProductImageController,
 }

@@ -24,12 +24,3 @@ const createIndex = async (indexName) => {
 }
 
 module.exports = { createIndex }
-
-// (
-//   {
-//     index: 'e_commerce1',
-//   },
-//   (err, resp, status) => {
-//     err ? console.log(err) : console.log('create', resp)
-//   }
-// )

@@ -28,7 +28,7 @@ router1.put('/products/:id', updateProductByIdController) // update a product by
 
 router1.route('/addproduct').post(addProductController) // add a product
 
-// router1.route('/search').post(getProductThroughSearch) // search for a product
+router1.route('/search').post(getProductThroughSearch) // search for a product
 
 // router1.route('/:id/uploadphoto').post(addProductImageController)
 
