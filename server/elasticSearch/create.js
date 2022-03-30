@@ -1,20 +1,25 @@
 // CREATE ELASTIC SEARCH INDEX
 
-const { elasticSearchClient } = require('../config/elasticsearchConnection')
+const elasticSearchClient = require('../config/elasticsearchConnection')
 
 const createIndex = async (indexName) => {
   // check if there's such index in elastic search
   try {
-    const result = await elasticSearchClient.indices.get({
+    const response = await elasticSearchClient.indices.exists({
       index: indexName,
     })
-    // console.log(result)
-    return result
+    if (response.body) {
+      console.log('Index already exists')
+    } else {
+      console.log('Index does not exist')
+      // create index
+      const responseIndex = await elasticSearchClient.indices.create({
+        index: indexName,
+      })
+      console.log(responseIndex)
+    }
   } catch (error) {
-    // if such index doesn't exist, create it
-    return await elasticSearchClient.indices.create({
-      index: indexName,
-    })
+    console.log(error)
   }
 }
 

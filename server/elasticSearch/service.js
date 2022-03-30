@@ -14,9 +14,10 @@ elasticSearchClient.ping(
     } else {
       console.log('Elasticsearch is ready')
       try {
+        /*
         //CreateIndex
         const resp = await createIndex('e_commerce1')
-        console.log(responseIndex)
+        console.log(resp)
 
         // Custom mapping for products
         const productMapping = {
@@ -90,6 +91,17 @@ elasticSearchClient.ping(
           )
           console.log(responseDocument)
         }
+*/
+        // Search document
+        const body = {
+          query: {
+            match_phrase_prefix: {
+              product_name: 'Laptop',
+            },
+          },
+        }
+        const response = await searchDocument('e_commerce1', 'products', body)
+        console.log(response)
       } catch (error) {
         console.log(error)
       }

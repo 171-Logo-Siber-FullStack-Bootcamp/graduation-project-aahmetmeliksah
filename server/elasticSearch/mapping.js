@@ -1,5 +1,5 @@
 // MAP ELASTIC SEARCH
-const { elasticSearchClient } = require('../config/elasticsearchConnection')
+const elasticSearchClient = require('../config/elasticsearchConnection')
 
 const mapElasticSearch = async (indexName, mappingType, mapping) => {
   console.log(mapping)
