@@ -85,11 +85,16 @@
       </div>
     </form>
   </div>
+  <footer-comp />
 </template>
 <script>
 import axios from 'axios'
+import FooterComp from '../components/FooterComp.vue'
 
 export default {
+  components: {
+    FooterComp,
+  },
   data() {
     return {
       newProduct: {

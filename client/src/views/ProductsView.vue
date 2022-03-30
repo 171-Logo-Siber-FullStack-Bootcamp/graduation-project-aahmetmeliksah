@@ -14,11 +14,14 @@
       />
     </div>
   </div>
+  <footer-comp />
 </template>
 <script>
 import ProductCardComp from '../components/ProductCardComp.vue'
 import ProductDrawer from '../components/ProductDrawer.vue'
 import allProducts from '../../services/products/getAll'
+import FooterComp from '../components/FooterComp.vue'
+
 let products = []
 allProducts.then((res) => {
   products = res
@@ -29,6 +32,7 @@ export default {
   components: {
     ProductCardComp,
     ProductDrawer,
+    FooterComp,
   },
   data() {
     return {
