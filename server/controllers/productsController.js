@@ -9,6 +9,8 @@ const {
   updateProductByIdService,
   // addProductImageService,
 } = require('../services/productsService')
+const insertDocument = require('../elasticSearch/document_add')
+const searchWithElastic = require('../elasticSearch/search')
 // const { addProductImage } = require('../utils/ProductImageHelper')
 
 // ADD A PRODUCT
@@ -17,11 +19,9 @@ const addProductController = async (req, res) => {
     // const filename = addProductImage(req, res)
 
     const result = await addProductService(req, res /*, filename*/)
-    logger.log({
-      level: 'info',
-      message: result,
-    })
+
     res.send(result)
+    insertDocument('e_commerce1', result.id, 'products', result)
   } catch (error) {
     console.log(error)
     res.send(error)
@@ -69,6 +69,16 @@ const updateProductByIdController = async (req, res) => {
   res.status(200).send({ result, message: 'Product UPDATED' })
 }
 
+const getProductThroughSearch = async (req, res) => {
+  const searchResult = searchWithElastic(
+    'products',
+    'product',
+    req.body.data.searchInput
+  )
+  const result = findProductByIdController(searchResult.id)
+  res.status(200).send(result)
+}
+
 // const addProductImageController = async (req, res) => {
 //   const filename = await addProductImage(req, res)
 
@@ -83,5 +93,6 @@ module.exports = {
   findProductByIdController,
   removeProductByIdController,
   updateProductByIdController,
+  getProductThroughSearch,
   // addProductImageController,
 }

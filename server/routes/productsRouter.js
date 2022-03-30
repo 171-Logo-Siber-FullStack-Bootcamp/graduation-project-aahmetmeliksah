@@ -12,6 +12,7 @@ const {
   findProductByIdController,
   removeProductByIdController,
   updateProductByIdController,
+  getProductThroughSearch,
   // addProductImageController,
 } = require('../controllers/productsController')
 
@@ -26,6 +27,8 @@ router1.delete('/products/:id', removeProductByIdController) // remove a product
 router1.put('/products/:id', updateProductByIdController) // update a product by id
 
 router1.route('/addproduct').post(addProductController) // add a product
+
+router1.route('/search').post(getProductThroughSearch) // search for a product
 
 // router1.route('/:id/uploadphoto').post(addProductImageController)
 
